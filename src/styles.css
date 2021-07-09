@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.link {
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.underline {
+    text-decoration: underline;
+}

@@ -1,0 +1,6 @@
+<div class="storylist">
+    <div *ngFor="let item of stories">
+        <app-news-story [story]="item"></app-news-story>
+    </div>
+    <a class="button" class="morestory link" (click)="getMoreStories()">More</a>
+</div>

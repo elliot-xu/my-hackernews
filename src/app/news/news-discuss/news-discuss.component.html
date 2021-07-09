@@ -1,0 +1,10 @@
+<div class="discusspanel">
+    <app-news-story [story]="story"></app-news-story>
+    <p *ngIf="story && story.text" class="sttext" [innerHtml]="story.text"></p>
+    <textarea class="commarea"></textarea>
+    <div>
+        <button class="button">add comment</button>
+    </div>
+
+    <app-news-discuss-wrapper [storyIds]="storyCommentIds"></app-news-discuss-wrapper>
+</div>

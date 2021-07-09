@@ -1,0 +1,33 @@
+.commpanel {
+    margin: 5px 20px 5px 20px;
+}
+
+.commhead {
+    font-size: 12px;
+    color:  #828282;
+}
+
+.commupvote {
+}
+
+.commhide {
+    padding-left: 5px;
+}
+
+.commtext {
+    font-size: 14px;
+    margin: 0 10px 0 10px;
+}
+
+.commby {
+    padding-left: 5px;
+}
+
+.commage {
+    padding-left: 5px;
+}
+
+.commreply {
+    text-decoration: underline;
+    margin: 0 10px 0 10px;
+}

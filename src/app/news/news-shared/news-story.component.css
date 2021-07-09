@@ -1,0 +1,19 @@
+.stpanel {
+    margin: 0 0 10px 0;
+}
+
+.sttitle {
+    font-size: 14px;
+    margin: 0 0 0 5px;
+}
+
+.stsubtitle{
+    font-size: 12px;
+    margin: 0 0 0 10px;
+    padding: 0 0 0 0;
+}
+
+ul.stsubtitle li {
+    display: inline-block;
+    margin: 0 2px 0 2px;
+}

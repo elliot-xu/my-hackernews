@@ -1,0 +1,13 @@
+<div class="commpanel">
+    <div class="commhead">
+        <a class="button" class="commupvote link">▲</a>
+        <span class="commby underline link">{{storyComment.by}}</span>
+        <span class="commage">{{storyComment.time | timeAgo}}</span>
+        <a class="button" class="commhide link" (click)="onClickHide()">{{hidden ? '[' + subAmount + ' more]' : '[–]' }}</a>
+    </div>
+    <div [hidden]="hidden">
+        <p class="commtext" [innerHtml]="storyComment.text"></p>
+        <a class="button" class="commreply link">reply</a>
+        <ng-content></ng-content>
+    </div>
+</div>
