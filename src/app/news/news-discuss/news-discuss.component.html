@@ -1,4 +1,4 @@
-<div class="discusspanel">
+<div *ngIf="!hasError" class="discusspanel">
     <app-news-story [story]="story"></app-news-story>
     <p *ngIf="story && story.text" class="sttext" [innerHtml]="story.text"></p>
     <textarea class="commarea"></textarea>
@@ -8,3 +8,4 @@
 
     <app-news-discuss-wrapper [storyIds]="storyCommentIds"></app-news-discuss-wrapper>
 </div>
+<app-news-error *ngIf="hasError"></app-news-error>

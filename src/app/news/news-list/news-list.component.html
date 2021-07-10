@@ -1,6 +1,7 @@
-<div class="storylist">
+<div *ngIf="!hasError" class="storylist">
     <div *ngFor="let item of stories">
         <app-news-story [story]="item"></app-news-story>
     </div>
-    <a class="button" class="morestory link" (click)="getMoreStories()">More</a>
+    <a class="button morestory link" (click)="getMoreStories()">More</a>
 </div>
+<app-news-error *ngIf="hasError"></app-news-error>

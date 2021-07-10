@@ -5,5 +5,6 @@ export interface Comment {
     parent: number,
     text: string,
     type: string,
-    time: number
+    time: number,
+    deleted?: boolean
 }

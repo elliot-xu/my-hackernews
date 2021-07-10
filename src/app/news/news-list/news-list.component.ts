@@ -14,6 +14,7 @@ import { News } from '../news';
 export class NewsListComponent implements OnInit {
 
   public stories: News[] = [];
+  public hasError: boolean = false;
   storyPerPage: number = 15;
   type: string = 'newest';
 
@@ -75,11 +76,15 @@ export class NewsListComponent implements OnInit {
       (
         switchMap(x => this.initial$(x))
       )
-      .subscribe(x => {
-        this.nextPage$ = new Observable<number>(this.producer(x));
-        this.stories = [];
-        this.getMoreStories();
-      });
+      .subscribe(
+        x => {
+          this.nextPage$ = new Observable<number>(this.producer(x));
+          this.stories = [];
+          this.getMoreStories();
+        },
+        e => {
+          this.hasError = true;
+        });
   }
 
   getMoreStories() {
@@ -87,6 +92,10 @@ export class NewsListComponent implements OnInit {
       .pipe
       (
         mergeMap(id => this.hackerNews.getNewsById(id))
-      ).subscribe(x => this.stories.push(x));
+      ).subscribe(
+        x => this.stories.push(x),
+        e => {
+          this.hasError = true;
+        });
   }
 }

@@ -13,6 +13,7 @@ import { News } from '../news';
 export class NewsDiscussComponent implements OnInit {
   public storyCommentIds: number[] = [];
   public story: News | undefined;
+  public hasError: boolean = false;
 
   constructor(
     public hackerNews: HackerNewsService,
@@ -29,7 +30,9 @@ export class NewsDiscussComponent implements OnInit {
           this.storyCommentIds = s.kids ? s.kids : [];
         })
       )
-      .subscribe(x => this.story = x);
+      .subscribe(
+        x => this.story = x,
+        e => this.hasError = true);
   }
 
   ngOnInit(): void {

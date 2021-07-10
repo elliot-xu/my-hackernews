@@ -9,6 +9,7 @@ import { NewsStoryComponent } from './news-shared/news-story.component';
 import { NewsCommentComponent } from './news-shared/news-comment.component';
 import { NewsDetailWrapperComponent } from './news-discuss/news-discuss-wrapper.component';
 import { TimeAgoPipe } from './news-time.pipe';
+import { NewsErrorComponent } from './news-shared/news-error.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { TimeAgoPipe } from './news-time.pipe';
     NewsStoryComponent,
     NewsCommentComponent,
     NewsDetailWrapperComponent,
-    TimeAgoPipe
+    TimeAgoPipe,
+    NewsErrorComponent
   ],
   imports: [
     CommonModule,

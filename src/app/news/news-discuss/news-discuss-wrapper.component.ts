@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
 import { of } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { filter, mergeMap } from 'rxjs/operators';
 
 import { HackerNewsService } from '../hacker-news.service';
 import { NewsCommentComponent } from '../news-shared/news-comment.component';
@@ -20,9 +20,8 @@ export class NewsDetailWrapperComponent implements OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        for (const prop in changes)
-        {
-            if(prop === 'storyIds') {
+        for (const prop in changes) {
+            if (prop === 'storyIds') {
                 this.getComments();
             }
         }
@@ -33,7 +32,8 @@ export class NewsDetailWrapperComponent implements OnChanges {
             .pipe
             (
                 mergeMap(x => x.map(v => v)),
-                mergeMap(x => this.hackerNews.getCommentById(x))
+                mergeMap(x => this.hackerNews.getCommentById(x)),
+                filter(x => !x.deleted)
             )
             .subscribe(x => this.storyComments.push(x));
     }
