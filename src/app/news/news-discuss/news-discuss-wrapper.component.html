@@ -1,7 +1,5 @@
 <ng-template ngFor let-comment [ngForOf]="storyComments">
     <app-news-comment #comments [storyComment]="comment">
-        <ng-template [ngIf]="comment.kids">
-            <app-news-discuss-wrapper #commentKids [storyIds]="comment.kids"></app-news-discuss-wrapper>
-        </ng-template>
+        <app-news-discuss-wrapper *ngIf="comment.kids" #commentKids [storyIds]="comment.kids"></app-news-discuss-wrapper>
     </app-news-comment>
 </ng-template>

@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'timeAgo' })
-export class TimeAgoPipe implements PipeTransform {
+@Pipe({ name: 'timeAge' })
+export class TimeAgePipe implements PipeTransform {
     transform(value: number): string {
         let now = new Date().getTime() / 1000;
 

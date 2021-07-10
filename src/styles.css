@@ -8,6 +8,6 @@
     cursor: pointer;
 }
 
-.underline {
+.link:hover {
     text-decoration: underline;
 }

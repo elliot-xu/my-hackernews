@@ -1,9 +1,9 @@
 <div class="commpanel">
     <div class="commhead">
-        <a class="button" class="commupvote link">▲</a>
-        <span class="commby underline link">{{storyComment.by}}</span>
-        <span class="commage">{{storyComment.time | timeAgo}}</span>
-        <a class="button" class="commhide link" (click)="onClickHide()">{{hidden ? '[' + subAmount + ' more]' : '[–]' }}</a>
+        <a class="commupvote">▲</a>
+        <span class="commby link">{{storyComment.by}}</span>
+        <span class="commage">{{storyComment.time | timeAge}}</span>
+        <a class="button" class="commhide link" (click)="onClickHide()">{{ subAmount | hideComment: hidden }}</a>
     </div>
     <div [hidden]="hidden">
         <p class="commtext" [innerHtml]="storyComment.text"></p>

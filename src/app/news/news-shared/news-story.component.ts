@@ -8,7 +8,6 @@ import { News } from '../news';
   styleUrls: ['./news-story.component.css']
 })
 export class NewsStoryComponent implements OnInit {
-
   @Input() story: News | undefined;
 
   constructor(
@@ -16,11 +15,6 @@ export class NewsStoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  }
-
-  getDomain(url: string): string {
-    let r = ('' + url).match(/^(https?:)?\/\/[^/]+/i);
-    return r ? r[0] : '';
   }
 
   gotoDiscuss(id: number) {

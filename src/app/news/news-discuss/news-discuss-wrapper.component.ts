@@ -12,29 +12,31 @@ import { Comment } from '../comment';
 })
 export class NewsDetailWrapperComponent implements OnChanges {
     @Input() storyIds!: number[];
-    public storyComments: Comment[] = [];
     @ViewChildren('comments') comments!: QueryList<NewsCommentComponent>;
-
+    public storyComments: Comment[] = [];
+    
     constructor(
         public hackerNews: HackerNewsService) {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
         for (const prop in changes) {
-            if (prop === 'storyIds') {
-                this.getComments();
+            if (prop === 'storyIds' && changes[prop].currentValue) {
+                this.getComments(changes[prop].currentValue);
             }
         }
     }
 
-    getComments() {
-        of(this.storyIds)
-            .pipe
-            (
-                mergeMap(x => x.map(v => v)),
-                mergeMap(x => this.hackerNews.getCommentById(x)),
-                filter(x => !x.deleted)
-            )
-            .subscribe(x => this.storyComments.push(x));
+    getComments(ids: number[]) {
+        of(ids)
+        .pipe
+        (
+            mergeMap(x => x.map(v => v)),
+            mergeMap(x => this.hackerNews.getCommentById(x)),
+            filter(x => !x.deleted)
+        )
+        .subscribe(x => {
+            this.storyComments.push(x);
+        });
     }
 }

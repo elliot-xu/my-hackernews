@@ -8,8 +8,13 @@ import { NewsDiscussComponent } from './news-discuss/news-discuss.component';
 import { NewsStoryComponent } from './news-shared/news-story.component';
 import { NewsCommentComponent } from './news-shared/news-comment.component';
 import { NewsDetailWrapperComponent } from './news-discuss/news-discuss-wrapper.component';
-import { TimeAgoPipe } from './news-time.pipe';
 import { NewsErrorComponent } from './news-shared/news-error.component';
+import { NewsTitleDirective } from './news-directive/news-title.directive';
+import { TimeAgePipe } from './news-pipe/news-timeage.pipe';
+import { FormatPointPipe } from './news-pipe/news-formatpoint.pipe';
+import { ExtractDomainPipe } from './news-pipe/news-extractdomain.pipe';
+import { FormatCommentPipe } from './news-pipe/news-formatcomm.pipe';
+import { HideCommentPipe } from './news-pipe/news-hidecomm.pipe';
 
 
 @NgModule({
@@ -19,8 +24,13 @@ import { NewsErrorComponent } from './news-shared/news-error.component';
     NewsStoryComponent,
     NewsCommentComponent,
     NewsDetailWrapperComponent,
-    TimeAgoPipe,
-    NewsErrorComponent
+    NewsErrorComponent,
+    NewsTitleDirective,
+    TimeAgePipe,
+    HideCommentPipe,
+    FormatPointPipe,
+    ExtractDomainPipe,
+    FormatCommentPipe
   ],
   imports: [
     CommonModule,

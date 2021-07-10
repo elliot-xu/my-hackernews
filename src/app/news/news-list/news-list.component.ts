@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { fromEvent, Observable, Subscriber } from 'rxjs';
 import { mergeMap, map, debounceTime, filter, switchMap } from 'rxjs/operators';
 
@@ -16,7 +16,7 @@ export class NewsListComponent implements OnInit {
   public stories: News[] = [];
   public hasError: boolean = false;
   storyPerPage: number = 15;
-  type: string = 'newest';
+  type: string = 'top';
 
   scrollEvent$: Observable<number> =
     fromEvent(window, 'scroll')
@@ -37,16 +37,16 @@ export class NewsListComponent implements OnInit {
   initial$ = (type: string) => {
     switch (type) {
       case 'newest':
-      default:
         return this.hackerNews.getNewStories();
       case 'ask':
         return this.hackerNews.getAskStories();
       case 'show':
         return this.hackerNews.getShowStories();
-      case 'top':
-        return this.hackerNews.getTopStories();
       case 'best':
         return this.hackerNews.getBestStories();
+      case 'top':
+      default:
+        return this.hackerNews.getTopStories();
     }
   }
 
@@ -67,7 +67,8 @@ export class NewsListComponent implements OnInit {
 
   constructor(
     public hackerNews: HackerNewsService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
   }
 
   ngOnInit(): void {
