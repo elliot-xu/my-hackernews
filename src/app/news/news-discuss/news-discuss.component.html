@@ -1,11 +1,11 @@
-<div *ngIf="!hasError" class="discusspanel">
+<div *ngIf="!hasError && story" class="discusspanel">
     <app-news-story [story]="story"></app-news-story>
-    <p *ngIf="story && story.text" class="sttext" [innerHtml]="story.text"></p>
-    <textarea class="commarea"></textarea>
+    <p *ngIf="story.text" class="sttext" [innerHtml]="story.text"></p>
+    <textarea class="commarea" [(ngModel)]="commText"></textarea>
     <div>
-        <button class="button">add comment</button>
+        <button class="button" (click)="onAddComm()">add comment</button>
     </div>
 
-    <app-news-comment-wrapper [storyIds]="storyCommentIds"></app-news-comment-wrapper>
+    <app-news-comment-wrapper *ngIf="story.kids" [storyIds]="story.kids"></app-news-comment-wrapper>
 </div>
 <app-news-error *ngIf="hasError"></app-news-error>

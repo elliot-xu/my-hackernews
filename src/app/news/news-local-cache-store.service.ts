@@ -13,7 +13,7 @@ export class NewsLocalCacheStore {
         return item ? JSON.parse(item) : null;
     }
 
-    setItemByid(id: number, v: News | Comment): void {
+    setItemById(id: number, v: News | Comment): void {
         const v_stringify = JSON.stringify(v);
         window.localStorage.setItem(id.toString(), v_stringify);
     }

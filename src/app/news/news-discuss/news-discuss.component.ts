@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
+import { Comment } from '../comment';
 
 import { HackerNewsService } from '../hacker-news.service';
 import { News } from '../news';
@@ -11,9 +12,9 @@ import { News } from '../news';
   styleUrls: ['./news-discuss.component.css']
 })
 export class NewsDiscussComponent implements OnInit {
-  public storyCommentIds: number[] = [];
-  public story: News | undefined;
+  public story: News | null = null;
   public hasError: boolean = false;
+  public commText: string = '';
 
   constructor(
     public hackerNews: HackerNewsService,
@@ -25,9 +26,6 @@ export class NewsDiscussComponent implements OnInit {
         switchMap(params => {
           let id = parseInt(params.get('id')!, 10);
           return this.hackerNews.getNewsById(id);
-        }),
-        tap(s => {
-          this.storyCommentIds = s.kids ? s.kids : [];
         })
       )
       .subscribe(
@@ -36,5 +34,28 @@ export class NewsDiscussComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  onAddComm(): void {
+    if (this.story) {
+      let newComm: Comment = {
+        by: 'anonymous',
+        id: Math.floor(Math.random() * 1000) + this.story.id,
+        parent: this.story.id,
+        text: this.commText,
+        type: 'comment',
+        time: new Date().getTime() / 1000,
+      }
+
+      this.hackerNews.setItemById(newComm.id, newComm)
+        .subscribe(x => {
+          if (this.story && this.story.kids) {
+            this.story.kids = [x, ...this.story.kids];
+          } else if (this.story) {
+            this.story.kids = [x];
+          }
+          this.commText = '';
+        });
+    }
   }
 }

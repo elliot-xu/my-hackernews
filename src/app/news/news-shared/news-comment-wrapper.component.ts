@@ -14,7 +14,7 @@ export class NewsCommentWrapperComponent implements OnChanges {
     @Input() storyIds!: number[];
     @ViewChildren('comments') comments!: QueryList<NewsCommentComponent>;
     public storyComments: Comment[] = [];
-    
+
     constructor(
         public hackerNews: HackerNewsService) {
     }
@@ -28,14 +28,15 @@ export class NewsCommentWrapperComponent implements OnChanges {
     }
 
     getComments(ids: number[]) {
+        this.storyComments = [];
         from(ids)
-        .pipe
-        (
-            mergeMap(x => this.hackerNews.getCommentById(x)),
-            filter(x => !x.deleted)
-        )
-        .subscribe(x => {
-            this.storyComments.push(x);
-        });
+            .pipe
+            (
+                mergeMap(x => this.hackerNews.getCommentById(x)),
+                filter(x => !x.deleted)
+            )
+            .subscribe(x => {
+                this.storyComments.push(x);
+            });
     }
 }

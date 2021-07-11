@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { NewsRoutingModule } from './news-routing.module';
 import { HackerNewsService } from './hacker-news.service';
@@ -35,6 +36,7 @@ import { NewsLocalCacheStore } from './news-local-cache-store.service';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     NewsRoutingModule
   ],
   providers: [

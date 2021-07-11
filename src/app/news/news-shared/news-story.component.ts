@@ -8,7 +8,7 @@ import { News } from '../news';
   styleUrls: ['./news-story.component.css']
 })
 export class NewsStoryComponent implements OnInit {
-  @Input() story: News | undefined;
+  @Input() story: News | null = null;
 
   constructor(
     private router: Router) {
