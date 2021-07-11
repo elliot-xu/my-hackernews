@@ -3,14 +3,14 @@ import { from } from 'rxjs';
 import { filter, mergeMap } from 'rxjs/operators';
 
 import { HackerNewsService } from '../hacker-news.service';
-import { NewsCommentComponent } from '../news-shared/news-comment.component';
+import { NewsCommentComponent } from './news-comment.component';
 import { Comment } from '../comment';
 
 @Component({
-    selector: 'app-news-discuss-wrapper',
-    templateUrl: './news-discuss-wrapper.component.html'
+    selector: 'app-news-comment-wrapper',
+    templateUrl: './news-comment-wrapper.component.html'
 })
-export class NewsDiscussWrapperComponent implements OnChanges {
+export class NewsCommentWrapperComponent implements OnChanges {
     @Input() storyIds!: number[];
     @ViewChildren('comments') comments!: QueryList<NewsCommentComponent>;
     public storyComments: Comment[] = [];

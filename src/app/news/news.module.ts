@@ -7,7 +7,7 @@ import { NewsListComponent } from './news-list/news-list.component';
 import { NewsDiscussComponent } from './news-discuss/news-discuss.component';
 import { NewsStoryComponent } from './news-shared/news-story.component';
 import { NewsCommentComponent } from './news-shared/news-comment.component';
-import { NewsDiscussWrapperComponent } from './news-discuss/news-discuss-wrapper.component';
+import { NewsCommentWrapperComponent } from './news-shared/news-comment-wrapper.component';
 import { NewsErrorComponent } from './news-shared/news-error.component';
 import { NewsTitleDirective } from './news-directive/news-title.directive';
 import { TimeAgePipe } from './news-pipe/news-timeage.pipe';
@@ -24,7 +24,7 @@ import { NewsLocalCacheStore } from './news-local-cache-store.service';
     NewsDiscussComponent,
     NewsStoryComponent,
     NewsCommentComponent,
-    NewsDiscussWrapperComponent,
+    NewsCommentWrapperComponent,
     NewsErrorComponent,
     NewsTitleDirective,
     TimeAgePipe,
