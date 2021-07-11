@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, scheduled, asapScheduler } from 'rxjs';
 import { News } from './news';
 import { Comment } from './comment';
+import { NewsLocalCacheStore } from './news-local-cache-store.service';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
 })
 export class HackerNewsService {
-    constructor(public http: HttpClient) { }
+    constructor(
+        public http: HttpClient,
+        private cacheStore: NewsLocalCacheStore) { }
 
     getNewStories(): Observable<number[]> {
         return this.http.get<number[]>('https://hacker-news.firebaseio.com/v0/newstories.json');
@@ -35,10 +39,26 @@ export class HackerNewsService {
     }
 
     getNewsById(id: number): Observable<News> {
-        return this.http.get<News>(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
+        const item = this.cacheStore.getItemById(id) as News;
+        if(item) {
+            return scheduled([item], asapScheduler);
+        } else {
+            return this.http.get<News>(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
+            .pipe(
+                tap(x => this.cacheStore.setItemByid(id, x))
+            );
+        }
     }
 
     getCommentById(id: number): Observable<Comment> {
-        return this.http.get<Comment>(`https://hacker-news.firebaseio.com/v0/item/${id}.json`);
+        const item = this.cacheStore.getItemById(id) as Comment;
+        if(item) {
+            return scheduled([item], asapScheduler);
+        } else {
+            return this.http.get<Comment>(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
+            .pipe(
+                tap(x => this.cacheStore.setItemByid(id, x))
+            );
+        }
     }
 }

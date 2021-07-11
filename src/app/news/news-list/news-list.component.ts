@@ -12,7 +12,6 @@ import { News } from '../news';
   styleUrls: ['./news-list.component.css']
 })
 export class NewsListComponent implements OnInit {
-
   public stories: News[] = [];
   public hasError: boolean = false;
   storyPerPage: number = 15;

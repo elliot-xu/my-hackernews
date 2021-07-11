@@ -7,7 +7,7 @@ import { NewsListComponent } from './news-list/news-list.component';
 import { NewsDiscussComponent } from './news-discuss/news-discuss.component';
 import { NewsStoryComponent } from './news-shared/news-story.component';
 import { NewsCommentComponent } from './news-shared/news-comment.component';
-import { NewsDetailWrapperComponent } from './news-discuss/news-discuss-wrapper.component';
+import { NewsDiscussWrapperComponent } from './news-discuss/news-discuss-wrapper.component';
 import { NewsErrorComponent } from './news-shared/news-error.component';
 import { NewsTitleDirective } from './news-directive/news-title.directive';
 import { TimeAgePipe } from './news-pipe/news-timeage.pipe';
@@ -15,6 +15,7 @@ import { FormatPointPipe } from './news-pipe/news-formatpoint.pipe';
 import { ExtractDomainPipe } from './news-pipe/news-extractdomain.pipe';
 import { FormatCommentPipe } from './news-pipe/news-formatcomm.pipe';
 import { HideCommentPipe } from './news-pipe/news-hidecomm.pipe';
+import { NewsLocalCacheStore } from './news-local-cache-store.service';
 
 
 @NgModule({
@@ -23,7 +24,7 @@ import { HideCommentPipe } from './news-pipe/news-hidecomm.pipe';
     NewsDiscussComponent,
     NewsStoryComponent,
     NewsCommentComponent,
-    NewsDetailWrapperComponent,
+    NewsDiscussWrapperComponent,
     NewsErrorComponent,
     NewsTitleDirective,
     TimeAgePipe,
@@ -36,6 +37,9 @@ import { HideCommentPipe } from './news-pipe/news-hidecomm.pipe';
     CommonModule,
     NewsRoutingModule
   ],
-  providers: [HackerNewsService]
+  providers: [
+    HackerNewsService,
+    NewsLocalCacheStore
+  ]
 })
 export class NewsModule { }

@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, QueryList, SimpleChanges, ViewChildren } from '@angular/core';
-import { of } from 'rxjs';
+import { from } from 'rxjs';
 import { filter, mergeMap } from 'rxjs/operators';
 
 import { HackerNewsService } from '../hacker-news.service';
@@ -10,7 +10,7 @@ import { Comment } from '../comment';
     selector: 'app-news-discuss-wrapper',
     templateUrl: './news-discuss-wrapper.component.html'
 })
-export class NewsDetailWrapperComponent implements OnChanges {
+export class NewsDiscussWrapperComponent implements OnChanges {
     @Input() storyIds!: number[];
     @ViewChildren('comments') comments!: QueryList<NewsCommentComponent>;
     public storyComments: Comment[] = [];
@@ -28,10 +28,9 @@ export class NewsDetailWrapperComponent implements OnChanges {
     }
 
     getComments(ids: number[]) {
-        of(ids)
+        from(ids)
         .pipe
         (
-            mergeMap(x => x.map(v => v)),
             mergeMap(x => this.hackerNews.getCommentById(x)),
             filter(x => !x.deleted)
         )

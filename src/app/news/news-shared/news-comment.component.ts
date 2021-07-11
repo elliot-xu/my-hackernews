@@ -1,6 +1,6 @@
 import { AfterContentInit, Component, ContentChild, Input, OnInit, QueryList } from '@angular/core';
 import { debounce } from 'rxjs/operators';
-import { NewsDetailWrapperComponent } from '../news-discuss/news-discuss-wrapper.component';
+import { NewsDiscussWrapperComponent } from '../news-discuss/news-discuss-wrapper.component';
 import { Comment } from '../comment';
 import { timer } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { timer } from 'rxjs';
 })
 export class NewsCommentComponent implements OnInit, AfterContentInit {
   @Input() storyComment!: Comment;
-  @ContentChild('commentKids') childContainer: NewsDetailWrapperComponent | undefined;
+  @ContentChild('commentKids') childContainer: NewsDiscussWrapperComponent | undefined;
 
   public subAmount: number = 1;
   hidden: boolean = false;

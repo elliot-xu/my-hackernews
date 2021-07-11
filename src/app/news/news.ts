@@ -1,12 +1,12 @@
 export interface News {
-    by: string;
-    descendants: number;
-    id: number;
-    kids: number[] | undefined,
+    by: string,
+    descendants: number,
+    id: number,
+    kids?: number[],
     score: number,
     time: number,
     title: string,
-    text: string | undefined;
+    text?: string;
     type: string,
-    url: string | undefined,
+    url?: string,
 }
