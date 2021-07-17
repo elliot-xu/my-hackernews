@@ -7,7 +7,10 @@
     </div>
     <div [hidden]="hidden">
         <p class="commtext" [innerHtml]="storyComment.text"></p>
-        <a class="button" class="commreply link">reply</a>
+        <a class="button" class="commreply link" (click)="onReply()">reply</a>
+        <app-news-add-comment [hidden]="commentHidden" (onCommentTextChanged)="onAddComment($event)">
+            <a class="button" class="commreply link" (click)="onReply()">cancel</a>
+        </app-news-add-comment>
         <ng-content></ng-content>
     </div>
 </div>

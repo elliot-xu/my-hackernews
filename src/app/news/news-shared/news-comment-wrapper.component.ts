@@ -5,10 +5,12 @@ import { filter, mergeMap } from 'rxjs/operators';
 import { HackerNewsService } from '../hacker-news.service';
 import { NewsCommentComponent } from './news-comment.component';
 import { Comment } from '../comment';
+import { NewsCommentNofity } from '../news-comment-notify.service';
 
 @Component({
     selector: 'app-news-comment-wrapper',
-    templateUrl: './news-comment-wrapper.component.html'
+    templateUrl: './news-comment-wrapper.component.html',
+    providers: [NewsCommentNofity]
 })
 export class NewsCommentWrapperComponent implements OnChanges {
     @Input() storyIds!: number[];
@@ -16,7 +18,13 @@ export class NewsCommentWrapperComponent implements OnChanges {
     public storyComments: Comment[] = [];
 
     constructor(
-        public hackerNews: HackerNewsService) {
+        private hackerNews: HackerNewsService,
+        private commentNotify: NewsCommentNofity) {
+            this.commentNotify.missionAnnounced$.subscribe(
+                _ => {
+                    this.comments.notifyOnChanges();
+                }
+            );
     }
 
     ngOnChanges(changes: SimpleChanges): void {

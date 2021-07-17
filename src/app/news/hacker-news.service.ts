@@ -53,7 +53,7 @@ export class HackerNewsService {
     getCommentById(id: number): Observable<Comment> {
         const item = this.cacheStore.getItemById(id) as Comment;
         if (item) {
-            return scheduled([item], asapScheduler);
+            return scheduled([item], asyncScheduler);
         } else {
             return this.http.get<Comment>(`https://hacker-news.firebaseio.com/v0/item/${id}.json`)
                 .pipe(
@@ -62,13 +62,22 @@ export class HackerNewsService {
         }
     }
 
-    setItemById(id: number, item: Comment): Observable<number> {
+    setItemById(id: number, commText: string): Observable<number> {
+        const newComm: Comment = {
+            by: 'anonymous',
+            id: Math.floor(Math.random() * 1000) + id,
+            parent: id,
+            text: commText,
+            type: 'comment',
+            time: new Date().getTime() / 1000,
+        }
+
         return new Observable<number>(subscriber => {
-            setTimeout(() => {
-                this.cacheStore.setItemById(id, item);
-                subscriber.next(id);
-                subscriber.complete();
-            }, 0);
-        })
+            this.cacheStore.setItemById(newComm.id, newComm);
+            subscriber.next(newComm.id);
+            subscriber.complete();
+        }).pipe(
+            observeOn(asyncScheduler)
+        );
     }
 }

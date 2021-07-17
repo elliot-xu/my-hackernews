@@ -17,6 +17,7 @@ import { ExtractDomainPipe } from './news-pipe/news-extractdomain.pipe';
 import { FormatCommentPipe } from './news-pipe/news-formatcomm.pipe';
 import { HideCommentPipe } from './news-pipe/news-hidecomm.pipe';
 import { NewsLocalCacheStore } from './news-local-cache-store.service';
+import { NewsAddCommentComponent } from './news-shared/news-add-comment.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { NewsLocalCacheStore } from './news-local-cache-store.service';
     NewsCommentWrapperComponent,
     NewsErrorComponent,
     NewsTitleDirective,
+    NewsAddCommentComponent,
     TimeAgePipe,
     HideCommentPipe,
     FormatPointPipe,
