@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { News } from '../news';
 
 @Component({
@@ -10,14 +9,9 @@ import { News } from '../news';
 export class NewsStoryComponent implements OnInit {
   @Input() story: News | null = null;
 
-  constructor(
-    private router: Router) {
+  constructor() {
   }
 
   ngOnInit(): void {
-  }
-
-  gotoDiscuss(id: number) {
-    this.router.navigate([`/newsdiscuss/${id}`]);
   }
 }

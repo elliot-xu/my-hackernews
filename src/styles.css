@@ -3,11 +3,20 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.link {
-    font-size: 11px;
+.link, .titleLink {
+    color: #000;
     cursor: pointer;
+    text-decoration: none;
 }
 
-.link:hover {
+.link {
+    font-size: 11px;
+}
+
+.link:hover, .titleLink:hover {
     text-decoration: underline;
+}
+
+.link:visited, .titleLink:visited {
+    color: #828282;
 }

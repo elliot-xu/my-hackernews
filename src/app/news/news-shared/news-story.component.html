@@ -1,6 +1,6 @@
 <div class="stpanel" *ngIf="story">
     <div class="sttitle">
-        <a appNewsTitle [news]="story">
+        <a class="titleLink" appNewsTitle [news]="story">
             <span [innerHTML]="story.title"></span>
         </a>
         <ng-template [ngIf]="story.url">
@@ -12,6 +12,8 @@
         <li>{{ story.score | formatPoint }}</li>
         <li>by <span class="link">{{story.by}}</span></li>
         <li>{{story.time | timeAge }}</li>
-        <li class="link" (click)="gotoDiscuss(story.id)">{{ story.descendants | formatComment }}</li>
+        <li>
+            <a class="link" routerLink="/newsdiscuss/{{story.id}}">{{ story.descendants | formatComment }}</a>
+        </li>
     </ul>
 </div>
