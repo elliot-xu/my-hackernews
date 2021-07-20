@@ -1,13 +1,12 @@
 <section class="newscontainer">
-  <nav class="navigation">
-    <a class="button titleLink" routerLink="/newslist" [queryParams]="{ type: 'top'}">Top</a> |
-    <a class="button titleLink" routerLink="/newslist" [queryParams]="{ type: 'newest'}">New</a> |
-    <a class="button titleLink" routerLink="/newslist" [queryParams]="{ type: 'best'}">Best</a> |
-    <a class="button titleLink" routerLink="/newslist" [queryParams]="{ type: 'ask'}">Ask</a> |
-    <a class="button titleLink" routerLink="/newslist" [queryParams]="{ type: 'show'}">Show</a>
-  </nav>
-
   <section class="newspanel">
+    <nav class="navigation">
+      <a class="button titleLink" routerLink="/newslist" [queryParams]="{ type: 'top'}">Top</a> |
+      <a class="button titleLink" routerLink="/newslist" [queryParams]="{ type: 'newest'}">New</a> |
+      <a class="button titleLink" routerLink="/newslist" [queryParams]="{ type: 'best'}">Best</a> |
+      <a class="button titleLink" routerLink="/newslist" [queryParams]="{ type: 'ask'}">Ask</a> |
+      <a class="button titleLink" routerLink="/newslist" [queryParams]="{ type: 'show'}">Show</a>
+    </nav>
     <router-outlet></router-outlet>
   </section>
   <aside class="aside-1"></aside>

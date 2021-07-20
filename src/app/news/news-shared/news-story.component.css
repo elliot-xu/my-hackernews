@@ -1,5 +1,8 @@
 .stpanel {
     margin: 0 0 10px 0;
+    border: 1px solid tomato;
+    box-shadow: 1px 1px 2px tomato;
+    border-bottom-right-radius: 23px 40%;
 }
 
 .sttitle {

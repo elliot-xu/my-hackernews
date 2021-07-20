@@ -3,18 +3,21 @@
     flex-flow: row wrap;
 }
 
-.newscontainer > nav {
-    padding: 10px;
+.navigation {
+    margin-bottom: 24px;
+}
+
+.newscontainer > .newspanel {
     flex: 1 100%;
 }
 
 @media all and (min-width: 600px) {
-    aside { flex: 1 auto; }
+    .newscontainer > aside { flex: 1 0 20px; }
 }
-  
+
 @media all and (min-width: 800px) {
-    .newspanel    { flex: 9 0px; }
-    .aside-1 { order: 1; } 
-    .newspanel    { order: 2; }
-    .aside-2 { order: 3; }
+    .newscontainer > .newspanel    { flex: 3 auto; }
+    .newscontainer > .aside-1      { order: 1; } 
+    .newscontainer > .newspanel    { order: 2; }
+    .newscontainer > .aside-2      { order: 3; }
 }
