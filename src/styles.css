@@ -13,7 +13,7 @@
     font-size: 11px;
 }
 
-.link:hover, .titleLink:hover {
+.link:hover {
     text-decoration: underline;
 }
 
