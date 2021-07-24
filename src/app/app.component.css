@@ -5,6 +5,7 @@
 
 .navigation {
     margin-bottom: 24px;
+    padding-left: 3px;
     background-color: rgb(253, 115, 65);
 }
 
@@ -17,11 +18,11 @@
 }
 
 @media all and (min-width: 600px) {
-    .newscontainer > aside { flex: 1 0 20px; }
+    .newscontainer > aside { flex: 1 0 30px; }
 }
 
 @media all and (min-width: 800px) {
-    .newscontainer > .newspanel    { flex: 3 auto; }
+    .newscontainer > .newspanel    { flex: 2 1 830px; }
     .newscontainer > .aside-1      { order: 1; } 
     .newscontainer > .newspanel    { order: 2; }
     .newscontainer > .aside-2      { order: 3; }
